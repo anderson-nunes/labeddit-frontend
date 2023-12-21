@@ -8,13 +8,11 @@ import style from './style.module.css'
 
 const Signup = () => {
 
-  const [name, setName] = useState("")
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-
   const handleBtnAction = () => {
-
     console.log('Botão de ação clicado');
   };
 
