@@ -10,10 +10,10 @@ type PostCardProps = {
   content: string
   like: number
   dislike: number
-  comment: number
+  comment?: number
   btnLike: (id: string) => void
   btnDislike: (id: string) => void
-  btnComment: (id: string) => void
+  btnComment?: (id: string) => void
 }
 
 const PostCard = (props: PostCardProps) => {
@@ -40,12 +40,15 @@ const PostCard = (props: PostCardProps) => {
 
         </div>
         <div className={style['post-card-actions-item']}>
-          <button onClick={() => props.btnComment(props.id)}>
-            <img src={iconComment} alt="icone comentário" />
-            <span className={style['post-card-total']}>
-              {humanNumber(props.comment)}
-            </span>
-          </button>
+          {props.comment && (
+            <button onClick={() => props.btnComment &&
+              props.btnComment(props.id)}>
+              <img src={iconComment} alt="icone comentário" />
+              <span className={style['post-card-total']}>
+                {humanNumber(props.comment)}
+              </span>
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -1,9 +1,13 @@
-.post-container {
+.post-comment-container {
   padding: 0 30px;
-  margin-top: 32px;
+  margin-top: 28px;
 }
 
-.post-card {
+.post-comment-container textarea {
+  margin-top: 12px;
+}
+
+.post-comment {
   display: flex;
   flex-direction: column;
   margin-top: 26px;
