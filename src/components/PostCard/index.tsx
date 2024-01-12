@@ -1,19 +1,32 @@
 import style from './style.module.css'
-import iconLike from '../../assets/icon-like.svg'
-import iconDislike from '../../assets/icon-dislike.svg'
-import iconComment from '../../assets/icon-comment.svg'
+import { ReactComponent as IconLike } from '../../assets/icon-like.svg'
+import { ReactComponent as IconDislike } from '../../assets/icon-dislike.svg'
+import { ReactComponent as IconComment } from '../../assets/icon-comment.svg'
 import humanNumber from 'human-number'
 
 type PostCardProps = {
   id: string
   author: string
   content: string
-  like: number
-  dislike: number
+  likes: number
+  dislikes: number
+  localLike: boolean
+  localDislike: boolean
   comment?: number
+  rating: boolean | null
   btnLike: (id: string) => void
   btnDislike: (id: string) => void
   btnComment?: (id: string) => void
+}
+
+const getIconLike = (rating: boolean | null) => {
+  const color = rating === true ? '#F9B24E' : '#6F6F6F'
+  return <IconLike stroke={color} />
+}
+
+const getIconDislike = (rating: boolean | null) => {
+  const color = rating === false ? '#FF6489' : '#6F6F6F'
+  return <IconDislike stroke={color} />
 }
 
 const PostCard = (props: PostCardProps) => {
@@ -29,26 +42,27 @@ const PostCard = (props: PostCardProps) => {
       <div className={style['post-card-actions-container']}>
         <div className={style['post-card-actions-item']}>
           <button onClick={() => props.btnLike(props.id)}>
-            <img src={iconLike} alt="icone de like" />
+            {getIconLike(props.rating)}
           </button>
           <span className={style['post-card-total']}>
-            {humanNumber(props.like - props.dislike)}
+            {humanNumber(props.likes - props.dislikes)}
           </span>
           <button onClick={() => props.btnDislike(props.id)}>
-            <img src={iconDislike} alt="icone dislike" />
+            {getIconDislike(props.rating)}
           </button>
 
         </div>
         <div className={style['post-card-actions-item']}>
-          {props.comment && (
-            <button onClick={() => props.btnComment &&
-              props.btnComment(props.id)}>
-              <img src={iconComment} alt="icone comentário" />
-              <span className={style['post-card-total']}>
-                {humanNumber(props.comment)}
-              </span>
-            </button>
-          )}
+
+          <button onClick={() => props.btnComment &&
+            props.btnComment(props.id)}>
+            {/* <img src={iconComment} alt="icone comentário" /> */}
+            <IconComment />
+            <span className={style['post-card-total']}>
+              {humanNumber(props.comment || 0)}
+            </span>
+          </button>
+
         </div>
       </div>
     </div>

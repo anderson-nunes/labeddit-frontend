@@ -3,6 +3,7 @@ import Login from '../pages/login'
 import Signup from '../pages/signup'
 import Posts from '../pages/posts'
 import PostComment from '../pages/PostComment'
+import ProtectedRoute from './ProtectedRoute'
 
 
 const Router = () => {
@@ -11,8 +12,10 @@ const Router = () => {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/posts' element={<Posts />} />
-        <Route path='/posts/:id' element={<PostComment />} />
+        <Route element={<ProtectedRoute />} >
+          <Route path='/posts' element={<Posts />} />
+          <Route path='/posts/:id' element={<PostComment />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )

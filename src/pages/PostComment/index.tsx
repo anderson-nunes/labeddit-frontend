@@ -67,13 +67,16 @@ const PostComment = () => {
           btnLike={(id) => console.log(id)}
           comment={listPost[0].comment}
           content={listPost[0].message}
-          like={listPost[0].like}
-          dislike={listPost[0].dislike}
+          likes={listPost[0].like}
+          dislikes={listPost[0].dislike}
+          localLike={false}
+          localDislike={false}
+          rating
         />
-        <Post
+        {/* <Post
           placeholder="Adicionar comentário"
           labelAction="Responder"
-        />
+        /> */}
         <HorizontalLine />
         <div className={style['post-comment']}>
           {listPost.map((post) => (
@@ -84,8 +87,11 @@ const PostComment = () => {
               btnDislike={(id) => console.log(id)}
               btnLike={(id) => console.log(id)}
               content={post.message}
-              like={post.like}
-              dislike={post.dislike}
+              likes={post.like}
+              dislikes={post.dislike}
+              localLike={false}
+              localDislike={false}
+              rating={false}
             />
           ))}
         </div>

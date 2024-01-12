@@ -12,6 +12,7 @@ const Button = (props: ButtonProps) => {
   return (
     <button
       className={`${style.button} ${style[`button-${props.variant}`]}`}
+      onClick={props.onClick}
       type={props.type}
     >
       {props.children}
