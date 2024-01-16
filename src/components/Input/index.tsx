@@ -4,6 +4,7 @@ type InputProps = {
   placeholder: string
   type: string
   value: string
+  required: boolean
   onChange: (e: React.FormEvent<HTMLInputElement>) => void
 }
 
@@ -15,6 +16,7 @@ const Input = (props: InputProps) => {
       className={style.input}
       onChange={props.onChange}
       placeholder={props.placeholder}
+      required={props.required}
     />
   )
 }

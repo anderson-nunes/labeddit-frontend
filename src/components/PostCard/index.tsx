@@ -3,6 +3,7 @@ import { ReactComponent as IconLike } from '../../assets/icon-like.svg'
 import { ReactComponent as IconDislike } from '../../assets/icon-dislike.svg'
 import { ReactComponent as IconComment } from '../../assets/icon-comment.svg'
 import humanNumber from 'human-number'
+import { useNavigate } from 'react-router-dom'
 
 type PostCardProps = {
   id: string
@@ -30,6 +31,9 @@ const getIconDislike = (rating: boolean | null) => {
 }
 
 const PostCard = (props: PostCardProps) => {
+
+  const navigate = useNavigate()
+
   return (
     <div className={style['post-card-container']}>
       <div className={style['post-card-author']}>
@@ -57,7 +61,7 @@ const PostCard = (props: PostCardProps) => {
           <button onClick={() => props.btnComment &&
             props.btnComment(props.id)}>
             {/* <img src={iconComment} alt="icone comentário" /> */}
-            <IconComment />
+            <IconComment onClick={() => navigate(`/posts/${props.id}`)} />
             <span className={style['post-card-total']}>
               {humanNumber(props.comment || 0)}
             </span>

@@ -13,7 +13,7 @@ export const login = async (body: any) => {
 };
 
 export const signup = async (body: any) => {
-  const response = await fetchApp("/users/signup", {
+  const response = await fetchApp("users/signup", {
     body,
     method: "POST",
   });
