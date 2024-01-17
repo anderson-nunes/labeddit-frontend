@@ -25,3 +25,11 @@ export const likeOrDislike = async (id: string, body: any) => {
 
   return response;
 };
+
+export const getPostById = async (id: string) => {
+  const response = await fetchApp(`posts/${id}`, {
+    method: "GET",
+  });
+
+  return response;
+};

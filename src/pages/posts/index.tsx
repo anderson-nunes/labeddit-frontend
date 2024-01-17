@@ -96,10 +96,6 @@ const Posts = () => {
     })
   }, [])
 
-  const handleBtnActionHeader = () => {
-    console.log('Botão de ação clicado');
-  };
-
   const handleCreatePost = async () => {
     try {
 
@@ -127,7 +123,7 @@ const Posts = () => {
     <>
       <Header
         logo={logo}
-        btnAction={handleBtnActionHeader}
+        hasClose={false}
         labelAction="Logout"
       />
       <div className={style['post-container']}>
@@ -142,6 +138,7 @@ const Posts = () => {
         <div className={style['post-card']}>
           {posts.map((post: any) => (
             <PostCard
+              key={post.id}
               id={post.id}
               author={post.creator ? post.creator.name : null}
               btnComment={(id) => console.log(id)}
@@ -151,8 +148,6 @@ const Posts = () => {
               content={post.content}
               likes={post.likes}
               dislikes={post.dislikes}
-              localLike={false}
-              localDislike={false}
               rating={post.rating}
             />
           ))}

@@ -41,7 +41,7 @@ const Signup = () => {
     <>
       <Header
         logo={logo}
-        btnAction={handleSubmitSignup}
+        hasClose={false}
         labelAction="Entrar"
       />
       <div className={style['signup-container']}>
@@ -65,7 +65,7 @@ const Signup = () => {
             value={password}
             onChange={(e) => setPassword(e.currentTarget.value)}
             placeholder="Senha"
-            type="text"
+            type="password"
             required
           />
 

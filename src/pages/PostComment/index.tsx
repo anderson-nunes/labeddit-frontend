@@ -4,97 +4,205 @@ import PostCard from "../../components/PostCard";
 import style from './style.module.css'
 import Post from "../../components/Post";
 import HorizontalLine from "../../components/HorizontalLine";
+import { useEffect, useState } from "react";
+import { getPostById } from "../../services/posts";
+import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
+import { createComment, likeOrDislikeComment } from "../../services/comments";
 
 const PostComment = () => {
 
-  const listPost = [
-    {
-      id: 'u001',
-      author: 'Anderson',
-      message: 'suhsaushuashahsas',
-      like: 5,
-      dislike: 1,
-      comment: 5
-    },
-    {
-      id: 'u002',
-      author: 'Everton',
-      message: 'suhsaushuashahsas',
-      like: 12,
-      dislike: 2,
-      comment: 10
-    },
-    {
-      id: 'u003',
-      author: 'Ketlen',
-      message: 'suhsaushuashahsas',
-      like: 5,
-      dislike: 1,
-      comment: 8
-    },
-    {
-      id: 'u004',
-      author: 'Patricia',
-      message: 'suhsaushuashahsas',
-      like: 15,
-      dislike: 2,
-      comment: 10
-    },
-  ]
+  const [post, setPost] = useState<any>({})
+  const [newComment, setNewComment] = useState('')
+  const [loading, setLoading] = useState(true)
 
-  const handleBtnAction = () => {
-    console.log('Botão de ação clicado');
-  };
+  const { id } = useParams();
 
-  const handleBtnClose = () => {
-    console.log('Botão de ação clicado');
-  };
+  const addLike = async (commentId: string) => {
+    const currentComments = [...post.comments]
+
+    try {
+      const newComments = post.comments.map((comment: any) => {
+        if (comment.id === commentId) {
+          const isDislike = comment.rating === false
+          const isNeutral = comment.rating === null
+          const isLike = comment.rating === true
+
+          let likes = comment.likes;
+
+          if (isNeutral || isDislike) {
+            likes = likes + 1
+          } else if (isLike) {
+            likes = likes - 1
+          }
+
+          return {
+            ...comment,
+            rating: isNeutral || isDislike ? true : null,
+            dislikes: isDislike ? comment.dislikes - 1 : comment.dislikes,
+            likes,
+          }
+        }
+        return comment
+      })
+
+
+
+      setPost({
+        ...post,
+        comments: newComments
+      })
+
+      if (id) {
+        await likeOrDislikeComment(id, commentId, {
+          like: true
+        })
+      }
+
+    } catch (error) {
+      setPost({
+        ...post,
+        comments: currentComments
+      })
+    }
+  }
+
+  const removeLike = async (commentId: string) => {
+    const currentComments = [...post.comments]
+
+    try {
+      const newComments = post.comments.map((comment: any) => {
+        if (comment.id === commentId) {
+          const isDislike = comment.rating === false
+          const isNeutral = comment.rating === null
+          const isLike = comment.rating === true
+
+          let dislikes = comment.dislikes;
+          const rating = isLike || isNeutral ? false : null
+
+          if (isNeutral || isLike) {
+            dislikes = dislikes + 1
+          } else if (isDislike) {
+            dislikes = dislikes - 1
+          }
+
+          return {
+            ...comment,
+            likes: rating ? post.likes + 1 : post.likes,
+            rating,
+            dislikes,
+          }
+        }
+        return comment
+      })
+
+
+
+      setPost({
+        ...post,
+        comments: newComments
+      })
+
+      if (id) {
+        await likeOrDislikeComment(id, commentId, {
+          like: false
+        })
+      }
+
+    } catch (error) {
+      setPost({
+        ...post,
+        comments: currentComments
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (id) {
+      getPostById(id).then((post) => {
+        setPost(post)
+        setLoading(false)
+      }).catch((err) => {
+        console.error(err)
+      })
+    }
+
+  }, [])
+
+  const handleCreateComment = async () => {
+    try {
+      if (id) {
+        const responseCreatePost = await createComment(id, {
+          content: newComment
+        })
+
+        const createdComment = {
+          ...responseCreatePost,
+          creator_name: Cookies.get('user_name')
+        }
+
+        const newComments = [createdComment].concat(post.comments)
+        setPost({
+          ...post,
+          comments: newComments
+        })
+        setNewComment('')
+      }
+
+    } catch (error) {
+      console.log('handle create post => error')
+    }
+  }
+
+  console.log('@post', post)
 
   return (
     <>
       <Header
         logo={logo}
-        btnAction={handleBtnAction}
-        btnClose={handleBtnClose}
+        hasClose={true}
         labelAction="Logout"
       />
       <div className={style['post-comment-container']}>
-        <PostCard
-          id={listPost[0].id}
-          author={listPost[0].author}
-          btnComment={(id) => console.log(id)}
-          btnDislike={(id) => console.log(id)}
-          btnLike={(id) => console.log(id)}
-          comment={listPost[0].comment}
-          content={listPost[0].message}
-          likes={listPost[0].like}
-          dislikes={listPost[0].dislike}
-          localLike={false}
-          localDislike={false}
-          rating
-        />
-        {/* <Post
-          placeholder="Adicionar comentário"
-          labelAction="Responder"
-        /> */}
-        <HorizontalLine />
-        <div className={style['post-comment']}>
-          {listPost.map((post) => (
+        {loading ? (
+          <div>Loading...</div>) : (
+          <>
             <PostCard
               id={post.id}
-              author={post.author}
+              author={post.creator.name}
               btnComment={(id) => console.log(id)}
               btnDislike={(id) => console.log(id)}
               btnLike={(id) => console.log(id)}
-              content={post.message}
-              likes={post.like}
-              dislikes={post.dislike}
-              localLike={false}
-              localDislike={false}
-              rating={false}
+              comment={10}
+              content={post.content}
+              likes={post.likes}
+              dislikes={post.dislikes}
+              rating={post.rating}
             />
-          ))}
-        </div>
+            <Post
+              labelAction="Comentar"
+              placeholder="Escreva seu comentário..."
+              onChange={(e) => setNewComment(e.currentTarget.value)}
+              value={newComment}
+              btnAction={handleCreateComment}
+            />
+            <HorizontalLine />
+            <div className={style['post-comment']}>
+              {post.comments.map((post: any) => (
+                <PostCard
+                  key={post.id}
+                  id={post.id}
+                  author={post.creator_name}
+                  btnDislike={(id) => removeLike(id)}
+                  btnLike={(id) => addLike(id)}
+                  content={post.content}
+                  likes={post.likes}
+                  dislikes={post.dislikes}
+                  rating={post.rating}
+                />
+              ))}
+            </div>
+          </>)}
       </div>
     </>
   )

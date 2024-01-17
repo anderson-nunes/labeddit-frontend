@@ -1,12 +1,19 @@
 import style from './style.module.css'
 import iconClose from '../../assets/icon-close.svg'
 import { MouseEventHandler } from 'react'
+import Cookies from 'js-cookie'
+import { Link } from 'react-router-dom'
 
 type HeaderProps = {
-  btnClose?: MouseEventHandler<HTMLButtonElement>,
-  btnAction: MouseEventHandler<HTMLButtonElement>,
+  hasClose: boolean;
   logo: string,
   labelAction: string
+}
+
+const logout = () => {
+  Cookies.remove('user_name')
+  Cookies.remove('token')
+  window.location.href = '/'
 }
 
 export const Header = (props: HeaderProps) => {
@@ -14,12 +21,11 @@ export const Header = (props: HeaderProps) => {
   return (
     <header className={style['header-container']}>
       <div className={style['header-item']}>
-        {props.btnClose && (<button
-          className={style['header-btn-close']}
-          onClick={props.btnClose}>
-          <img src={iconClose} alt="icone para fechar o header" />
-        </button>)}
-
+        {props.hasClose && (
+          <Link to="/posts" className={style['header-btn-close']}>
+            <img src={iconClose} alt="icone para fechar o header" />
+          </Link>
+        )}
       </div>
       <div className={style['header-item']}>
         <img src={props.logo} alt="logo da aplicação" />
@@ -27,7 +33,7 @@ export const Header = (props: HeaderProps) => {
       <div className={style['header-item']}>
         <button
           className={style['header-btn-action']}
-          onClick={props.btnAction}>
+          onClick={logout}>
           <p>{props.labelAction}</p>
         </button>
       </div>
