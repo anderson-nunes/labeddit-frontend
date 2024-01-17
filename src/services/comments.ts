@@ -1,7 +1,7 @@
-import fetchApp from "./customFetch";
+import fetchApi from "./customFetch";
 
 export const createComment = async (postId: string, body: any) => {
-  const response = await fetchApp(`posts/${postId}/comment`, {
+  const response = await fetchApi(`posts/${postId}/comment`, {
     method: "POST",
     body,
   });
@@ -14,7 +14,7 @@ export const likeOrDislikeComment = async (
   commentId: string,
   body: any
 ) => {
-  const response = await fetchApp(`posts/${postId}/comment/${commentId}/like`, {
+  const response = await fetchApi(`posts/${postId}/comment/${commentId}/like`, {
     body,
     method: "PUT",
   });

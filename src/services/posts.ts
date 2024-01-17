@@ -1,7 +1,7 @@
-import fetchApp from "./customFetch";
+import fetchApi from "./customFetch";
 
 export const getPosts = async () => {
-  const response = await fetchApp("posts", {
+  const response = await fetchApi("posts", {
     method: "GET",
   });
 
@@ -9,7 +9,7 @@ export const getPosts = async () => {
 };
 
 export const createPost = async (body: any) => {
-  const response = await fetchApp("posts", {
+  const response = await fetchApi("posts", {
     body,
     method: "POST",
   });
@@ -18,7 +18,7 @@ export const createPost = async (body: any) => {
 };
 
 export const likeOrDislike = async (id: string, body: any) => {
-  const response = await fetchApp(`posts/${id}/like`, {
+  const response = await fetchApi(`posts/${id}/like`, {
     body,
     method: "PUT",
   });
@@ -27,7 +27,7 @@ export const likeOrDislike = async (id: string, body: any) => {
 };
 
 export const getPostById = async (id: string) => {
-  const response = await fetchApp(`posts/${id}`, {
+  const response = await fetchApi(`posts/${id}`, {
     method: "GET",
   });
 

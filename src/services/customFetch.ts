@@ -7,7 +7,7 @@ type Options = {
   headers?: HeadersInit | undefined | any;
 };
 
-const fetchApp = async (path: string, options: Options) => {
+const fetchApi = async (path: string, options: Options) => {
   try {
     const token = Cookies.get("token");
 
@@ -38,8 +38,8 @@ const fetchApp = async (path: string, options: Options) => {
 
     return;
   } catch (error: any) {
-    throw error;
+    return new Error(error);
   }
 };
 
-export default fetchApp;
+export default fetchApi;

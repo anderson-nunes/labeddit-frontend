@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
-import fetchApp from "./customFetch";
+import fetchApi from "./customFetch";
 
 export const login = async (body: any) => {
-  const response = await fetchApp("users/login", {
+  const response = await fetchApi("users/login", {
     body,
     method: "POST",
   });
@@ -13,7 +13,7 @@ export const login = async (body: any) => {
 };
 
 export const signup = async (body: any) => {
-  const response = await fetchApp("users/signup", {
+  const response = await fetchApi("users/signup", {
     body,
     method: "POST",
   });

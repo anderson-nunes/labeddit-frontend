@@ -19,10 +19,10 @@ const PostComment = () => {
   const { id } = useParams();
 
   const addLike = async (commentId: string) => {
-    const currentComments = [...post.comments]
+    const currentComments = [...post.commentList]
 
     try {
-      const newComments = post.comments.map((comment: any) => {
+      const newComments = post.commentList.map((comment: any) => {
         if (comment.id === commentId) {
           const isDislike = comment.rating === false
           const isNeutral = comment.rating === null
@@ -50,7 +50,7 @@ const PostComment = () => {
 
       setPost({
         ...post,
-        comments: newComments
+        commentList: newComments
       })
 
       if (id) {
@@ -62,16 +62,16 @@ const PostComment = () => {
     } catch (error) {
       setPost({
         ...post,
-        comments: currentComments
+        commentList: currentComments
       })
     }
   }
 
   const removeLike = async (commentId: string) => {
-    const currentComments = [...post.comments]
+    const currentComments = [...post.commentList]
 
     try {
-      const newComments = post.comments.map((comment: any) => {
+      const newComments = post.commentList.map((comment: any) => {
         if (comment.id === commentId) {
           const isDislike = comment.rating === false
           const isNeutral = comment.rating === null
@@ -88,7 +88,7 @@ const PostComment = () => {
 
           return {
             ...comment,
-            likes: rating ? post.likes + 1 : post.likes,
+            likes: rating ? comment.likes + 1 : comment.likes,
             rating,
             dislikes,
           }
@@ -100,19 +100,22 @@ const PostComment = () => {
 
       setPost({
         ...post,
-        comments: newComments
+        commentList: newComments
       })
 
-      if (id) {
-        await likeOrDislikeComment(id, commentId, {
-          like: false
-        })
-      }
+      console.log('@oldComments', currentComments)
+      console.log('@newComments', newComments)
+
+      // if (id) {
+      //   await likeOrDislikeComment(id, commentId, {
+      //     like: false
+      //   })
+      // }
 
     } catch (error) {
       setPost({
         ...post,
-        comments: currentComments
+        commentList: currentComments
       })
     }
   }
@@ -141,10 +144,10 @@ const PostComment = () => {
           creator_name: Cookies.get('user_name')
         }
 
-        const newComments = [createdComment].concat(post.comments)
+        const newComments = [createdComment].concat(post.commentList)
         setPost({
           ...post,
-          comments: newComments
+          commentList: newComments
         })
         setNewComment('')
       }
@@ -153,8 +156,6 @@ const PostComment = () => {
       console.log('handle create post => error')
     }
   }
-
-  console.log('@post', post)
 
   return (
     <>
@@ -173,10 +174,10 @@ const PostComment = () => {
               btnComment={(id) => console.log(id)}
               btnDislike={(id) => console.log(id)}
               btnLike={(id) => console.log(id)}
-              comment={10}
               content={post.content}
               likes={post.likes}
               dislikes={post.dislikes}
+              comment={post.comments}
               rating={post.rating}
             />
             <Post
@@ -188,7 +189,7 @@ const PostComment = () => {
             />
             <HorizontalLine />
             <div className={style['post-comment']}>
-              {post.comments.map((post: any) => (
+              {post.commentList.map((post: any) => (
                 <PostCard
                   key={post.id}
                   id={post.id}

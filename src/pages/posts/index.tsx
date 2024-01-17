@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 const Posts = () => {
   const [posts, setPosts] = useState<any[]>([])
   const [newPost, setNewPost] = useState('')
+  const [loading, setLoading] = useState(true)
 
   const addLike = async (id: string) => {
     const currentPosts = [...posts]
@@ -91,6 +92,7 @@ const Posts = () => {
   useEffect(() => {
     getPosts().then((posts) => {
       setPosts(posts)
+      setLoading(false)
     }).catch((err) => {
       console.error(err)
     })
@@ -135,23 +137,27 @@ const Posts = () => {
           btnAction={handleCreatePost}
         />
         <HorizontalLine />
-        <div className={style['post-card']}>
-          {posts.map((post: any) => (
-            <PostCard
-              key={post.id}
-              id={post.id}
-              author={post.creator ? post.creator.name : null}
-              btnComment={(id) => console.log(id)}
-              btnDislike={(id) => removeLike(id)}
-              btnLike={(id) => addLike(id)}
-              comment={post.comments}
-              content={post.content}
-              likes={post.likes}
-              dislikes={post.dislikes}
-              rating={post.rating}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <div className={style['post-card']}>
+            {posts.map((post: any) => (
+              <PostCard
+                key={post.id}
+                id={post.id}
+                author={post.creator ? post.creator.name : null}
+                btnComment={(id) => console.log(id)}
+                btnDislike={(id) => removeLike(id)}
+                btnLike={(id) => addLike(id)}
+                comment={post.comments}
+                content={post.content}
+                likes={post.likes}
+                dislikes={post.dislikes}
+                rating={post.rating}
+              />
+            ))}
+          </div>
+        )}
       </div >
     </>
   )
