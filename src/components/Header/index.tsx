@@ -1,6 +1,5 @@
 import style from './style.module.css'
 import iconClose from '../../assets/icon-close.svg'
-import { MouseEventHandler } from 'react'
 import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
 

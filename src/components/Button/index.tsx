@@ -1,10 +1,9 @@
-import { ButtonHTMLAttributes } from 'react'
 import style from './style.module.css'
 
 type ButtonProps = {
   children: React.ReactNode
   variant: "primary" | "secondary"
-  onClick: (e: React.FormEvent) => void
+  onClick?: (e: React.FormEvent) => void
   type: any
 }
 

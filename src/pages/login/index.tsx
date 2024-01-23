@@ -7,6 +7,7 @@ import HorizontalLine from "../../components/HorizontalLine";
 import { login } from "../../services/authentication";
 import { useNavigate } from "react-router-dom";
 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,13 +44,10 @@ const Login = () => {
           type="password"
           required
         />
-
-        <Button onClick={handleSubmit} variant="primary" type="submit">
+        <Button variant="primary" type="submit">
           Continuar
         </Button>
-
         <HorizontalLine />
-
         <Button
           onClick={() => navigate('/signup')}
           variant="secondary"

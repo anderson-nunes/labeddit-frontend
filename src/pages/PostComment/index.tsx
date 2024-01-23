@@ -78,7 +78,12 @@ const PostComment = () => {
           const isLike = comment.rating === true
 
           let dislikes = comment.dislikes;
-          const rating = isLike || isNeutral ? false : null
+
+          // Lógica que estava dando erro
+
+          // const rating = isLike || isNeutral ? false : null
+
+          //Lógica igual ao like e dislike do post
 
           if (isNeutral || isLike) {
             dislikes = dislikes + 1
@@ -86,10 +91,21 @@ const PostComment = () => {
             dislikes = dislikes - 1
           }
 
+          // Lógica que estava dando erro
+
+          // return {
+          //   ...comment,
+          //   likes: rating ? comment.likes + 1 : comment.likes,
+          //   rating,
+          //   dislikes,
+          // }
+
           return {
             ...comment,
-            likes: rating ? comment.likes + 1 : comment.likes,
-            rating,
+            rating: isLike || isNeutral ? false
+              : null,
+            likes: isLike ? comment.likes - 1 :
+              comment.likes,
             dislikes,
           }
         }
@@ -181,7 +197,7 @@ const PostComment = () => {
               rating={post.rating}
             />
             <Post
-              labelAction="Comentar"
+              labelAction="Responder"
               placeholder="Escreva seu comentário..."
               onChange={(e) => setNewComment(e.currentTarget.value)}
               value={newComment}

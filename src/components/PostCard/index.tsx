@@ -35,7 +35,7 @@ const PostCard = (props: PostCardProps) => {
   return (
     <div className={style['post-card-container']}>
       <div className={style['post-card-author']}>
-        <p>{props.author}</p>
+        <p>Enviado por: {props.author}</p>
       </div>
       <div className={style['post-card-content']}>
         <p>{props.content}

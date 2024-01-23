@@ -49,3 +49,19 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - POSTCARD
   - LIKE & DISLIKE
   - COMMENTS
+
+Verificar as rotas protegidas e não protegidas
+
+Na tela de signup ao clicar no botão de cadastrar sem os dados preenchidos ele não deve ir para outra tela sem a validação ser mostrada
+
+Na criação de um novo usuário não esta aparecendo o nome dele quando cria o post e comentário, somente após dar reaload na tela
+
+TODO
+
+DONE Validar formulários com required e types
+DONE Fazer o logout funcionar
+DONE Ordenar lista dos comentários na api
+DONE Incluir o nome do criador do post na tela de comentários
+DONE Incluir o nome do criador do post na tela do post
+DONE Incluir o nome do criador do comentário na tela de comentários
+DONE Corrigir a quantidade de comentários e a lista de comentários por post
