@@ -108,8 +108,8 @@ const Posts = () => {
       const createdPost = {
         ...responseCreatePost,
         creator: {
-          name: Cookies.get('user_name'),
-          id: responseCreatePost.creator_id
+          name: responseCreatePost.creator.name || Cookies.get('user_name'),
+          id: responseCreatePost.creator.id
         }
       }
 

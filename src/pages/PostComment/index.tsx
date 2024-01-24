@@ -157,7 +157,10 @@ const PostComment = () => {
 
         const createdComment = {
           ...responseCreatePost,
-          creator_name: Cookies.get('user_name')
+          creator: {
+            name: responseCreatePost.creator.name || Cookies.get('user_name'),
+            id: responseCreatePost.creator.id
+          }
         }
 
         const newComments = [createdComment].concat(post.commentList)
@@ -209,7 +212,7 @@ const PostComment = () => {
                 <PostCard
                   key={post.id}
                   id={post.id}
-                  author={post.creator_name}
+                  author={post.creator.name}
                   btnDislike={(id) => removeLike(id)}
                   btnLike={(id) => addLike(id)}
                   content={post.content}
