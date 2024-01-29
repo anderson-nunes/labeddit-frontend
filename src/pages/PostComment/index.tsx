@@ -133,10 +133,11 @@ const PostComment = () => {
         const createdComment = {
           ...responseCreateComment,
           creator: {
-            name: responseCreateComment.creator_name || Cookies.get('user_name'),
+            name: responseCreateComment.creator.name || Cookies.get('user_name'),
             id: responseCreateComment.creator.id
           }
         }
+        console.log("@=>newComments", createdComment)
 
         const newComments = [createdComment].concat(post.commentList)
         setPost({
@@ -144,6 +145,7 @@ const PostComment = () => {
           commentList: newComments
         })
         setNewComment('')
+        console.log("@=>newComments", newComments)
       }
 
     } catch (error) {
@@ -187,7 +189,7 @@ const PostComment = () => {
                 <PostCard
                   key={post.id}
                   id={post.id}
-                  author={post.creator_name}
+                  author={post.creator.name}
                   btnDislike={(id) => removeLike(id)}
                   btnLike={(id) => addLike(id)}
                   content={post.content}
