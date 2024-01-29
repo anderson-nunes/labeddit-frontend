@@ -9,7 +9,6 @@ type PostProps = {
   onChange: (e: React.FormEvent<HTMLTextAreaElement>) => void
 }
 
-
 const Post = (props: PostProps) => {
   return (
     <div>

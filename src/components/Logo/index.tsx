@@ -1,8 +1,6 @@
 import style from './style.module.css'
 import iconLogo from '../../assets/icon-logo.svg'
 
-
-
 const Logo = () => {
   return (
     <div className={style['logo-container']}>

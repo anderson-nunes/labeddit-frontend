@@ -46,8 +46,6 @@ const PostComment = () => {
         return comment
       })
 
-
-
       setPost({
         ...post,
         commentList: newComments
@@ -79,26 +77,11 @@ const PostComment = () => {
 
           let dislikes = comment.dislikes;
 
-          // Lógica que estava dando erro
-
-          // const rating = isLike || isNeutral ? false : null
-
-          //Lógica igual ao like e dislike do post
-
           if (isNeutral || isLike) {
             dislikes = dislikes + 1
           } else if (isDislike) {
             dislikes = dislikes - 1
           }
-
-          // Lógica que estava dando erro
-
-          // return {
-          //   ...comment,
-          //   likes: rating ? comment.likes + 1 : comment.likes,
-          //   rating,
-          //   dislikes,
-          // }
 
           return {
             ...comment,
@@ -112,8 +95,6 @@ const PostComment = () => {
         return comment
       })
 
-
-
       setPost({
         ...post,
         commentList: newComments
@@ -121,12 +102,6 @@ const PostComment = () => {
 
       console.log('@oldComments', currentComments)
       console.log('@newComments', newComments)
-
-      // if (id) {
-      //   await likeOrDislikeComment(id, commentId, {
-      //     like: false
-      //   })
-      // }
 
     } catch (error) {
       setPost({
@@ -151,15 +126,15 @@ const PostComment = () => {
   const handleCreateComment = async () => {
     try {
       if (id) {
-        const responseCreatePost = await createComment(id, {
+        const responseCreateComment = await createComment(id, {
           content: newComment
         })
 
         const createdComment = {
-          ...responseCreatePost,
+          ...responseCreateComment,
           creator: {
-            name: responseCreatePost.creator.name || Cookies.get('user_name'),
-            id: responseCreatePost.creator.id
+            name: responseCreateComment.creator_name || Cookies.get('user_name'),
+            id: responseCreateComment.creator.id
           }
         }
 
@@ -212,7 +187,7 @@ const PostComment = () => {
                 <PostCard
                   key={post.id}
                   id={post.id}
-                  author={post.creator.name}
+                  author={post.creator_name}
                   btnDislike={(id) => removeLike(id)}
                   btnLike={(id) => addLike(id)}
                   content={post.content}
