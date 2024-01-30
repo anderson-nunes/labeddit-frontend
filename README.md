@@ -24,6 +24,7 @@ Link vercel: [projeto-labeddit](https://labeddit-frontend-six.vercel.app/)
 ## Exemplo para login
 
 E-mail: zion@email.com
+<br>
 Senha: Zion@123
 
 ## Resumo do Projeto
