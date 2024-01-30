@@ -1,67 +1,96 @@
-# Getting Started with Create React App
+<h1 align="center">Projeto Labeddit Frontend</h1>
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Projeto gif](./src/assets/labeddit-front-end.gif)
 
-## Available Scripts
+</div>
 
-In the project directory, you can run:
+## Índice
 
-### `npm start`
+- [Link de Acesso](#Link-de-Acesso)
+- [Resumo do Projeto](#Resumo-do-projeto)
+- [Definição do Produto e Funcionalidade](#Definição-do-Projeto-e-Funcionalidade)
+- [Instalação](#Instalação)
+- [Iniciando](#Iniciando)
+- [Lista de Requisitos](#Lista-de-Requisitos)
+- [Tecnologias e Ferramentas Utilizadas](#Tecnologias-e-Ferramentas-Utilizadas)
+- [Protótipo](#Protótipo)
+- [Estrutura do projeto](#Estrutura-do-projeto)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Link de Acesso
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Link surge: [projeto-pokedex](https://labeddit-frontend-six.vercel.app/)
 
-### `npm test`
+## Resumo do Projeto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O Labbedit é um projeto full-stack de conclusão de curso do bootcamp da Labenu. O projeto consiste em uma rede social na qual é possível se cadastrar, fazer login, criar, editar e excluir posts e comentários. Além disso há a possibilidade curtir ou descurtir posts e comentários de outros usuários.
 
-### `npm run build`
+## Definição de Produto e Funcionalidade
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+O projeto Labeddit possui quatro páginas:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Página de Login
 
-### `npm run eject`
+Na página de login é possui digitar seu e-mail e sua senha cadastrada e entrar no sistema. Caso ainda não tenha um e-mail/senha cadastrado no sistema, clique no botão crie uma conta! e será direcionado para a página de cadastro.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Página de Cadastro
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Nessa página o usuário pode criar sua conta fornecendo apenas um apelido, e-mail e senha. Sendo necessário concordar com os termos de política de privacidade. Caso haja algum erro o usuário será notificado. Ao realizar seu cadastro com sucesso o usuário é direcionada para a página de posts.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Página de Post
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Em post o usuário vai encontrar uma caixa de texto para criar seu próprio post, é nesta página que ficam todas as postagens dos demais usuários nas quais é possível dar like ou dislike.
+Ainda nessa página se o usuário desejar ver os comentários de um post é clicando no ícone de comentário que será redirecionada para a página de comentários.
+Há a possibilidade de fazer o Lougout clicando no botão superior direito.
 
-## COMPONENTES
+### Página de Comentários
 
-- HEADER
-- INPUT
-- BUTTON (PRIMARY, SECONDARY)
-- CHECKBOX
-- TEXTAREA
-- POSTCARD
-  - LIKE & DISLIKE
-  - COMMENTS
+Na página de comentários você pode dar like ou dislike nos comentários dos demais usuários. É possível também adicionar o seu próprio comentário, além disso, para melhorar a experiência do usuário a página possui um botão para retornar para a página de posts. Ou se preferir fazer o logout do sistema clicando no botão superior direito.
 
-Verificar as rotas protegidas e não protegidas
+## Instalação
 
-Na tela de signup ao clicar no botão de cadastrar sem os dados preenchidos ele não deve ir para outra tela sem a validação ser mostrada
+- Node.js
+- npm
 
-Na criação de um novo usuário não esta aparecendo o nome dele quando cria o post e comentário, somente após dar reaload na tela
+Para instalar as dependências no diretório do seu projeto, execute o seguinte comando:
 
-TODO
+- npm install
 
-DONE Validar formulários com required e types
-DONE Fazer o logout funcionar
-DONE Ordenar lista dos comentários na api
-DONE Incluir o nome do criador do post na tela de comentários
-DONE Incluir o nome do criador do post na tela do post
-DONE Incluir o nome do criador do comentário na tela de comentários
-DONE Corrigir a quantidade de comentários e a lista de comentários por post
+## Iniciando
+
+Para iniciar o aplicativo, execute o seguinte comando:
+
+- npm start
+
+## Tecnologias e Ferramentas Utilizadas
+
+Este site foi construído com as seguintes tecnologias:
+
+- Javascript
+- React
+- TypeScript
+- Styled-Components
+- Figma
+
+## Protótipo
+
+(#índice)<br>
+O Design de app **mobile first** foi fornecido pela Labenu, se preferir acesso direto pelo Figma clique **[aqui](https://www.figma.com/file/Ks2VBBhW0tN4p9g2ZtZtXE/Projeto-Integrador-Labeddit?type=design&node-id=0%3A1&mode=design&t=2qjhW6dWtWzmEM15-1)**, ou então acompanhe as imagens abaixo:
+
+### Login
+
+![Login](./src//assets/login.png)
+
+### Signup
+
+![Signup](./src/assets/signup.png)
+
+### Post
+
+![Post](./src/assets/post.png)
+
+### PostComment
+
+![PostComment](./src/assets/comment.png)
