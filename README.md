@@ -15,19 +15,17 @@
 - [Lista de Requisitos](#Lista-de-Requisitos)
 - [Tecnologias e Ferramentas Utilizadas](#Tecnologias-e-Ferramentas-Utilizadas)
 - [Protótipo](#Protótipo)
-- [Estrutura do projeto](#Estrutura-do-projeto)
+- [Requisitos do Projeto](#-Requisitos-do-projeto)
 
 ## Link de Acesso
 
-Link surge: [projeto-pokedex](https://labeddit-frontend-six.vercel.app/)
+Link surge: [projeto-labeddit](https://labeddit-frontend-six.vercel.app/)
 
 ## Resumo do Projeto
 
-O Labbedit é um projeto full-stack de conclusão de curso do bootcamp da Labenu. O projeto consiste em uma rede social na qual é possível se cadastrar, fazer login, criar, editar e excluir posts e comentários. Além disso há a possibilidade curtir ou descurtir posts e comentários de outros usuários.
+LabEddit é um projeto web full stack, desenvolvido com um design de aplicativo mobile first que permite a interação entre usuários por meio de postagens, comentários e votos. Os usuários também podem alterar apelido, senha e imagem de avatar, além de deletar suas próprias postagens e comentários.
 
 ## Definição de Produto e Funcionalidade
-
-<br>
 
 O projeto Labeddit possui quatro páginas:
 
@@ -69,15 +67,14 @@ Para iniciar o aplicativo, execute o seguinte comando:
 Este site foi construído com as seguintes tecnologias:
 
 - Javascript
-- React
 - TypeScript
-- Styled-Components
+- React
 - Figma
+- CSS Modules Stylesheet
 
 ## Protótipo
 
-(#índice)<br>
-O Design de app **mobile first** foi fornecido pela Labenu, se preferir acesso direto pelo Figma clique **[aqui](https://www.figma.com/file/Ks2VBBhW0tN4p9g2ZtZtXE/Projeto-Integrador-Labeddit?type=design&node-id=0%3A1&mode=design&t=2qjhW6dWtWzmEM15-1)**, ou então acompanhe as imagens abaixo:
+O Design de app mobile first foi fornecido pela Labenu, se preferir acesso direto pelo Figma clique [aqui](https://www.figma.com/file/Ks2VBBhW0tN4p9g2ZtZtXE/Projeto-Integrador-Labeddit?type=design&node-id=0%3A1&mode=design&t=2qjhW6dWtWzmEM15-1)\*\*, ou então acompanhe as imagens abaixo:
 
 ### Login
 
@@ -94,3 +91,10 @@ O Design de app **mobile first** foi fornecido pela Labenu, se preferir acesso d
 ### PostComment
 
 ![PostComment](./src/assets/comment.png)
+
+## Requisitos do Projeto
+
+- [✔️] Respeitar o layout do Figma
+- [✔️] Uso do ReactJS
+- [✔️] Site deployado
+- [✔️] Documentação README
