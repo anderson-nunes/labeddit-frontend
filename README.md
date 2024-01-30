@@ -19,7 +19,12 @@
 
 ## Link de Acesso
 
-Link surge: [projeto-labeddit](https://labeddit-frontend-six.vercel.app/)
+Link vercel: [projeto-labeddit](https://labeddit-frontend-six.vercel.app/)
+
+## Exemplo para login
+
+E-mail: zion@email.com
+Senha: Zion@123
 
 ## Resumo do Projeto
 
@@ -74,7 +79,7 @@ Este site foi construído com as seguintes tecnologias:
 
 ## Protótipo
 
-O Design de app mobile first foi fornecido pela Labenu, se preferir acesso direto pelo Figma clique [aqui](https://www.figma.com/file/Ks2VBBhW0tN4p9g2ZtZtXE/Projeto-Integrador-Labeddit?type=design&node-id=0%3A1&mode=design&t=2qjhW6dWtWzmEM15-1)\*\*, ou então acompanhe as imagens abaixo:
+O Design de app mobile first foi fornecido pela Labenu, se preferir acesso direto pelo Figma clique [aqui](https://www.figma.com/file/Ks2VBBhW0tN4p9g2ZtZtXE/Projeto-Integrador-Labeddit?type=design&node-id=0%3A1&mode=design&t=2qjhW6dWtWzmEM15-1), ou então acompanhe as imagens abaixo:
 
 ### Login
 
