@@ -21,6 +21,10 @@
 
 Link vercel: [projeto-labeddit](https://labeddit-frontend-six.vercel.app/)
 
+# Repositório Labeddit Backend
+
+https://github.com/anderson-nunes/labeddit-backend
+
 ## Exemplo para login
 
 E-mail: zion@email.com
