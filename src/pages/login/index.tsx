@@ -7,7 +7,6 @@ import HorizontalLine from "../../components/HorizontalLine";
 import { login } from "../../services/authentication";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
